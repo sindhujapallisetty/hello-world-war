@@ -3,7 +3,7 @@
 <title>Hello World!</title>
 </head>
 <body>
-	<h1>Hello Target IT Solutions Demo</h1>
+	<h1>Hello Target IT Solutions Demo webhook</h1>
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>
