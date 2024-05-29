@@ -1,0 +1,23 @@
+FROM ubuntu:latest
+
+RUN \
+  apt-get update && \
+  apt-get upgrade -y && \
+  apt-get install -y default-jre && \
+  apt-get install -y libtcnative-1 && \
+  apt-get install -y wget && \
+  apt-get install -y curl && \
+  apt-get install -y unzip
+
+RUN mkdir /opt/tomcat/
+
+WORKDIR /opt/tomcat
+RUN curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.86/bin/apache-tomcat-9.0.86.tar.gz
+RUN tar xvfz apache*.tar.gz
+RUN mv apache-tomcat-9.0.86/* /opt/tomcat/.
+
+COPY sample.war /opt/tomcat/webapps/
+
+EXPOSE 8080
+
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]
